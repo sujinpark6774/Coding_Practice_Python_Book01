@@ -2,8 +2,10 @@
 
 코딩 테스트를 위한 알고리즘 공부
 > Ref. 이것이 취업을 위한 코딩 테스트다 (나동빈 저)  
-  
-  
+  <img src="https://user-images.githubusercontent.com/61136651/180153292-848fb5ff-700a-40fb-8e19-5543fc877ae6.jpg" width="400">
+
+
+
 ## Contents
 ### 01. Greedy  
   chap03.
