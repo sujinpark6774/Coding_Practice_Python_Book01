@@ -12,7 +12,6 @@
 # 3 0 0
 # 1 2 2
 
-
 from collections import deque
 
 n, k = map(int, input().split())
@@ -23,12 +22,14 @@ for i in range(n):
 
     for j in range(n):
         if graph[i][j] != 0:
-            data.append((graph[i][j], 0, i, j))
+            data.append((graph[i][j], 0, i, j))     # 바이러스 번호, 시간, 바이러스 위치(i, j)
 
 data.sort()
 data = deque(data)                     # deque([(1, 0, 0, 0), (2, 0, 0, 2), (3, 0, 2, 0)])
 
 s, a, b = map(int, input().split())
+
+
 
 # 방향
 dx = [1, 0, -1, 0]
@@ -40,10 +41,8 @@ def bfs(num, time, x, y):
         nx = x + dx[i]
         ny = y + dy[i]
 
-        if time > s:
+        if time >= s:
             break
-
-
 
         if nx < 0 or nx >= n or ny < 0 or ny >= n:
             continue
@@ -54,12 +53,11 @@ def bfs(num, time, x, y):
 
     return graph
 
+
 while data:
     virus, time, x, y = data.popleft()
     bfs(virus, time, x, y)
 
-print(graph)
-print(a, b)
 print(graph[a - 1][b - 1])
 
 
