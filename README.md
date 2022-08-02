@@ -24,7 +24,7 @@ https://github.com/ndb796/python-for-coding-test
    - [x] Q_11_05.py (볼링공 고르기)
    - [x] Q_11_06.py (무지의 먹방 라이브)
 
-### 02. Implementatin 
+### 02. Implementation 
   chap04.
    - [x] Q_04_1.py  (상하좌우)
    - [x] Q_04_2.py  (시각)
