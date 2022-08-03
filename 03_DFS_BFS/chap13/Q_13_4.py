@@ -1,13 +1,9 @@
 # 13-4. 괄호 변환
 # https://programmers.co.kr/learn/courses/30/lessons/60058
 
-# p = "(()())()"
+p = "(()())()"
 # p = ")("
 # p = "()))((()"
-
-tmp = "()()))(("
-
-from collections import deque
 
 # 균형잡힌 괄호 문자열 확인
 def balanced_str(p):
@@ -31,53 +27,41 @@ def proper_str(p):
             check += 1
         else:
             check -= 1
-
             if check < 0:
                 return False
 
     return True
 
 # "올바른 괄호 문자열"이 아닐 때 변환
-def solution(result, p):
-    print("------------solution (result : ", result, ", p : ", p, " ------------")
+def solution(p):
+
+    result = ""
 
     # 1. 입력이 빈 문자열인 경우, 빈 문자열을 반환
     if p == "":
-        result += p
+        return result
 
-    # Case1. "올바른 괄호 문자열"인 경우
-    if proper_str(p) == True:
-        print("1. 올바른 괄호 문자열")
-        result += p
+    for num in range(1, len(p)):
+        u = p[0 : num + 1]
+        v = p[num + 1 : len(p) + 1]
+        if balanced_str(u) == True:
+            break
 
-    # Case2. "올바른 괄호 문자열"이 아닌 경우
+    if proper_str(u) == True:
+        result = u + solution(v)
+
     else:
-        print("2. 올바르지 않은 괄호 문자열")
+        result = "(" + solution(v) + ")"
 
-        for num in range(1, len(p)):
-            temp = p[0 : num + 1]
+        temp_u = ""
+        for i in u[1 : -1]:
+            if i == ")":
+                temp_u += "("
+            else:
+                temp_u += ")"
 
-            if balanced_str(temp) == True:
-                u = temp
-                v = p[num + 1 : len(p)]
-                break
-
-        print("u : ", u, ", v : ", v)
-
-        if proper_str(u) == True:
-            result += u
-            print("solution_result : ", result)
-            solution(result, v)
-
-        else:
-            temp = "(" + u[1 : len(u) - 1] + ")"
-            solution(result, temp)
-            # print("temp : ", temp)
+        result += temp_u
 
     return result
 
-
-result = ""
-
-# ()()))((
-print("\n>>>>>>>>> input : ", tmp, ", result : ", solution(result, tmp))
+print("\n>>>>>>>>> input : ", p, ", result : ", solution(p))
